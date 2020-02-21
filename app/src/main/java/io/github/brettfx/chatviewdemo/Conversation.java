@@ -17,7 +17,10 @@ import io.github.brettfx.chatviewdemo.recyclerview.Chat;
 import io.github.brettfx.chatviewdemo.recylcerchat.ChatData;
 import io.github.brettfx.chatviewdemo.recylcerchat.ConversationRecyclerView;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import io.github.brettfx.chatviewdemo.BaseActivity;
@@ -68,7 +71,12 @@ public class Conversation extends BaseActivity {
                 if (!text.getText().equals("")){
                     List<ChatData> data = new ArrayList<ChatData>();
                     ChatData item = new ChatData();
-                    item.setTime("6:00pm");
+
+                    //Displaying current date and time in 12 hour format with AM/PM
+                    DateFormat dateFormat = new SimpleDateFormat("hh:mm aa");
+                    String dateString = dateFormat.format(new Date());
+                    item.setTime(dateString);
+
                     item.setType("2");
                     item.setText(text.getText().toString());
                     data.add(item);
